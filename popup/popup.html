@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 头部区域 -->
+    <div class="header">
+      <div class="logo">
+        <img src="../assets/icons/logo.svg" class="logo-icon" alt="Logo">
+        <h1>WebRTC IP保护</h1>
+      </div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="content">
+      <!-- 状态卡片 -->
+      <div class="status-card">
+        <div class="status-header">
+          <div class="status-icon-wrapper">
+            <img src="../assets/icons/safe.svg" class="status-icon" id="status-icon" alt="Status">
+          </div>
+          <div class="status-info">
+            <h2 id="status-text">IP 保护已开启</h2>
+            <p id="status-desc">您的真实IP地址已隐藏</p>
+          </div>
+        </div>
+        
+        <!-- 开关控制 -->
+        <div class="control-section">
+          <span class="control-label">WebRTC 保护开关</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="protectionToggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 快捷操作 -->
+      <div class="actions">
+        <a href="https://ip.example.com/ipleak.html" target="_blank" class="action-btn primary">
+          <img src="../assets/icons/check.svg" alt="Check">
+          <span>检测IP泄露</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html> 

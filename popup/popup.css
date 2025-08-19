@@ -1,0 +1,345 @@
+:root {
+  /* 主色调 - 采用更现代的配色 */
+  --primary-color: #3b82f6;
+  --primary-light: #60a5fa;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+  
+  /* 文本颜色 */
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+  
+  /* 背景颜色 */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-card: #ffffff;
+  --bg-hover: #f3f4f6;
+  
+  /* 边框和阴影 */
+  --border-color: #e5e7eb;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  /* 圆角和动画 */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* 间距 */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 320px;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  padding: var(--space-4);
+}
+
+/* 头部样式 */
+.header {
+  text-align: center;
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.logo-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--primary-color);
+}
+
+h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+}
+
+/* 内容区域 */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* 状态卡片 */
+.status-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.status-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.status-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.status-icon-wrapper {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--success-color), #34d399);
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.status-icon {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+.status-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.status-info h2 {
+  margin: 0 0 var(--space-1) 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* 状态标题文字颜色 */
+.status-info h2.status-enabled {
+  color: var(--success-color);
+}
+
+.status-info h2.status-disabled {
+  color: var(--warning-color);
+}
+
+.status-info p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* 状态描述文字颜色 */
+.status-info p.leak-warning {
+  color: var(--warning-color);
+  font-weight: 500;
+}
+
+.status-info p.protection-success {
+  color: var(--success-color);
+  font-weight: 500;
+}
+
+/* 控制区域 */
+.control-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.control-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* 开关样式 */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--text-tertiary);
+  transition: var(--transition);
+  border-radius: 24px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: var(--transition);
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background: linear-gradient(135deg, var(--success-color), #34d399);
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(20px);
+}
+
+.toggle-switch:hover .toggle-slider {
+  box-shadow: var(--shadow-md);
+}
+
+/* 操作按钮 */
+.actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.action-btn img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.8;
+}
+
+.action-btn.primary {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.action-btn.primary:hover {
+  background: var(--primary-light);
+  border-color: var(--primary-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.action-btn:hover img {
+  opacity: 1;
+}
+
+/* 状态样式变化 */
+.status-card.protected .status-icon-wrapper {
+  background: linear-gradient(135deg, var(--success-color), #34d399);
+}
+
+.status-card.unprotected .status-icon-wrapper {
+  background: linear-gradient(135deg, var(--warning-color), #fbbf24);
+}
+
+/* 错误消息 */
+.error-message {
+  position: fixed;
+  top: var(--space-3);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--error-color);
+  color: white;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  display: none;
+  z-index: 1000;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  max-width: 90%;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* 响应式调整 */
+@media (max-width: 320px) {
+  body {
+    width: 300px;
+  }
+  
+  .container {
+    padding: var(--space-3);
+  }
+  
+  .status-card {
+    padding: var(--space-4);
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+} 
