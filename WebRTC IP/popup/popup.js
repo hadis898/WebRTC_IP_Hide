@@ -6,13 +6,9 @@ const CONSTANTS = {
   DEBOUNCE_DELAY: 300,
   STATUS: {
     ENABLED: {
-      TEXT: '保护状态：已开启',
-      DESC: '您的真实IP地址已隐藏',
       ICON: '../assets/icons/safe.svg'
     },
     DISABLED: {
-      TEXT: '保护状态：已关闭',
-      DESC: '您的真实IP地址已泄露',
       ICON: '../assets/icons/warning.svg'
     }
   }
@@ -39,7 +35,7 @@ async function checkWebRTCProtection() {
     updateUI(isProtected);
     return isProtected;
   } catch (error) {
-    handleError('检查保护状态时发生错误', error);
+    handleError(getText('errors.checkStatus'), error);
     return false;
   }
 }
@@ -58,8 +54,8 @@ function updateUI(isProtected) {
   }
 
   const status = isProtected ? CONSTANTS.STATUS.ENABLED : CONSTANTS.STATUS.DISABLED;
-  statusText.textContent = status.TEXT;
-  statusDesc.textContent = status.DESC;
+  statusText.textContent = getText(`status.${isProtected ? 'enabled' : 'disabled'}.text`);
+  statusDesc.textContent = getText(`status.${isProtected ? 'enabled' : 'disabled'}.desc`);
   statusIcon.src = status.ICON;
   toggle.checked = isProtected;
 
@@ -125,7 +121,7 @@ const toggleProtection = debounce(async function(enable) {
     });
     updateUI(enable);
   } catch (error) {
-    handleError('更改保护设置时发生错误', error);
+    handleError(getText('errors.changeSettings'), error);
     const toggle = document.getElementById('protectionToggle');
     if (toggle) toggle.checked = !enable;
   }
@@ -133,6 +129,9 @@ const toggleProtection = debounce(async function(enable) {
 
 // 初始化
 document.addEventListener('DOMContentLoaded', async () => {
+  // 初始化多语言支持
+  updateUILanguage();
+  
   await checkWebRTCProtection();
   
   // 设置开关监听器
@@ -140,4 +139,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (toggle) {
     toggle.addEventListener('change', (e) => toggleProtection(e.target.checked));
   }
-}); 
+  
+  // 设置语言切换器事件监听器
+  setupLanguageSwitcher();
+});
+
+// 设置语言切换器
+function setupLanguageSwitcher() {
+  const languageOptions = document.querySelectorAll('.language-option');
+  
+  languageOptions.forEach(option => {
+    option.addEventListener('click', (e) => {
+      const lang = e.target.dataset.lang;
+      setLanguage(lang);
+    });
+  });
+} 

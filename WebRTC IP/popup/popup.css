@@ -64,6 +64,7 @@ body {
   margin-bottom: var(--space-5);
   padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--border-color);
+  position: relative;
 }
 
 .logo {
@@ -325,6 +326,85 @@ h1 {
   }
 }
 
+/* 语言切换器样式 */
+.language-switcher {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.language-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.language-dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.current-language {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2);
+  font-size: 12px;
+  color: var(--text-primary);
+  font-weight: 500;
+  min-width: 60px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.current-language:hover {
+  background: var(--bg-hover);
+  border-color: var(--primary-color);
+}
+
+.language-options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  min-width: 80px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: var(--transition);
+}
+
+.language-dropdown:hover .language-options {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.language-option {
+  padding: var(--space-2) var(--space-3);
+  font-size: 12px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.language-option:last-child {
+  border-bottom: none;
+}
+
+.language-option:hover {
+  background: var(--bg-hover);
+  color: var(--primary-color);
+}
+
 /* 响应式调整 */
 @media (max-width: 320px) {
   body {
@@ -341,5 +421,11 @@ h1 {
   
   .actions {
     flex-direction: column;
+  }
+  
+  .language-switcher {
+    position: static;
+    justify-content: center;
+    margin-top: var(--space-3);
   }
 } 

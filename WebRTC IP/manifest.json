@@ -1,16 +1,15 @@
 {
-"update_url": "https://clients2.google.com/service/update2/crx",
-
   "manifest_version": 3,
   "name": "WebRTC IP保护",
-  "version": "0.0.1",
-  "description": "一键禁用WebRTC协议，彻底阻止IP泄露风险，保护隐私安全",
+  "version": "1.0.0",
+  "description": "一键禁用WebRTC协议，彻底阻止IP泄露风险，保护隐私安全。支持中英文双语界面，实时显示保护状态。",
   "author": "qczone",
   "homepage_url": "https://www.example.com/4661",
   "license": "MIT",
   "permissions": [
     "privacy"
   ],
+  "host_permissions": [],
   "icons": {
     "16": "assets/icons/icon16.png",
     "48": "assets/icons/icon48.png",
@@ -23,5 +22,8 @@
       "48": "assets/icons/icon48.png",
       "128": "assets/icons/icon128.png"
     }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
   }
 } 
